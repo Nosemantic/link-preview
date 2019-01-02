@@ -21,6 +21,7 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
 			time:parseInt(window.localStorage.getItem(DefaultOptions.timeout.label)),
 			position:window.localStorage.getItem(DefaultOptions.position.label),
 			domaincolor:window.localStorage.getItem(DefaultOptions.domaincolor.label),
+			Coords: request.Coords,
 			dataUrl: ImgData
 		};
 		sendResponse(r);
@@ -30,6 +31,7 @@ chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
 			time:parseInt(window.localStorage.getItem(DefaultOptions.timeout.label)),
 			position:window.localStorage.getItem(DefaultOptions.position.label),
 			domaincolor:window.localStorage.getItem(DefaultOptions.domaincolor.label),
+			Coords: request.Coords,
 			dataUrl: err
 		};
 		sendResponse(r);

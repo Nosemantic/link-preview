@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 
 async function getScreenShot(url) {
 	try {
-		const browser = await puppeteer.launch();
+		const browser = await puppeteer.launch({headless:true});
 		const page = await browser.newPage();
 		await page.goto(url);
 		var res = await page.screenshot({ encoding: "base64"});
