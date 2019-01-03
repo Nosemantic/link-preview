@@ -1,4 +1,5 @@
 jQuery(function($){
+    var check_if_link_preview_is_open = 0;
     var Coords = {
         screenX: 0 ,
         screenY: 0
@@ -14,7 +15,8 @@ jQuery(function($){
             chrome.runtime.sendMessage({method: 'show' , url: o.href , Coords: {x: e.screenX , y: e.screenY }}, function(r) {
                 console.log(r.Coords.x ,  Coords.screenX , r.Coords.y , Coords.screenY );
                 console.log(getDist(r.Coords.x ,  Coords.screenX , r.Coords.y , Coords.screenY ));
-                if(getDist(r.Coords.x ,  Coords.screenX , r.Coords.y , Coords.screenY ) < 30) {
+                if(getDist(r.Coords.x ,  Coords.screenX , r.Coords.y , Coords.screenY ) < 30 && check_if_link_preview_is_open ===0) {
+                    check_if_link_preview_is_open = 1 ;
                     var uri = $.url.parse(o.href),
                         position,
                         text = "<img  style = \"display: block;\n" +
@@ -71,5 +73,6 @@ jQuery(function($){
         }
     }).on('mouseleave', 'a', function(e){
         $(this).qtip('destroy');
+        check_if_link_preview_is_open = 0;
     })
 });
