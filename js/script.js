@@ -12,14 +12,17 @@ jQuery(function($){
         Coords.screenY = e.screenY;
         var o = this;
         if ( o.href != '#' ) {
+            $(o).tooltipster({
+                content: 'Loading...'
+            });
             chrome.runtime.sendMessage({method: 'show' , url: o.href , Coords: {x: e.screenX , y: e.screenY }}, function(r) {
                 console.log(r.Coords.x ,  Coords.screenX , r.Coords.y , Coords.screenY );
                 console.log(getDist(r.Coords.x ,  Coords.screenX , r.Coords.y , Coords.screenY ));
                 if(getDist(r.Coords.x ,  Coords.screenX , r.Coords.y , Coords.screenY ) < 30 && check_if_link_preview_is_open ===0) {
-                    check_if_link_preview_is_open = 1 ;
+                    check_if_link_preview_is_open;
                     var uri = $.url.parse(o.href),
                         position,
-                        text = "<img  style = \"display: block;\n" +
+                    text = "<img  style = \"display: block;\n" +
                             "  max-width:200px;\n" +
                             "  max-height:200px;\n" +
                             "  width: auto;\n" +

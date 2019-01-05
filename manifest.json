@@ -22,16 +22,20 @@
 		  	"https://*/*"
 		  ],
 		  "permissions":[
-		  	"http://*/*",
-		  	"https://*/*"
+			"tabs",
+			"cookies",
+			"*://*"
 		  ],
 		  "css": [
 		  	"css/jquery.qtip.min.css",
+			"css/tooltipster.bundle.min.css",
 		  	"css/font-awesome.min.css"
 		  ],
 		  "js": [
 		  	"js/jquery-2.1.1.min.js",
+			"js/tippy.all.min.js",
 		  	"js/jquery.qtip.min.js",
+			"js/tooltipster.bundle.min.js",
 		  	"js/jquery.urldecoder.min.js",
 		  	"js/script.js"
 		  ],

@@ -1,5 +1,8 @@
 $.each(DefaultOptions,function(i,v){if(!window.localStorage.getItem(v.label))window.localStorage.setItem(v.label,v.value)});
 
+function getCookies(options, callback) {
+	chrome.cookies.getAll(options, callback);
+}
 function getPreview(url) {
 	return new Promise(function(resolve, reject) {
 		var xhr = new XMLHttpRequest();
@@ -14,6 +17,7 @@ function getPreview(url) {
 	});
 }
 chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
+
 	var previewPromise = getPreview(request.url);
 	previewPromise.then(function(ImgData){
 		var  r =  {
