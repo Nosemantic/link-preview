@@ -1,3 +1,4 @@
+import "@babel/polyfill";
 const puppeteer = require('puppeteer');
 
 async function getScreenShot(url) {
